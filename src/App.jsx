@@ -1,16 +1,13 @@
-import { useDarkMode } from "./contexts/DarkModeContext";
-import DarkModeButton from "./ui/DarkModeButton";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import AppLayout from "./ui/AppLayout";
+
+const router = createBrowserRouter([
+  { element: <AppLayout />, children: [{ path: "/", element: <Home /> }] },
+]);
 
 function App() {
-  const { toggleDarkMode } = useDarkMode();
-
-  return (
-    <div>
-      <h1>App</h1>
-      <button onClick={toggleDarkMode}>Dark Mode</button>
-      <DarkModeButton />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
