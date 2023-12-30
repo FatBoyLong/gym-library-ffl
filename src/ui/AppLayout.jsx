@@ -1,5 +1,6 @@
 import { Outlet, useSearchParams } from "react-router-dom";
 import { useModal } from "../contexts/ModalContext";
+import Footer from "./Footer";
 import Header from "./Header";
 import ModalExercise from "./ModalExercise";
 
@@ -12,9 +13,14 @@ function AppLayout() {
       <Header />
       {<Outlet />}
       {modalIsOpen && <ModalExercise id={params.get("id")} />}
-      <footer className="mx-auto">footer</footer>
+      <Footer />
     </div>
   );
 }
+
+// export async function loader() {
+//   const exercises = await getExercises();
+//   return { exercises };
+// }
 
 export default AppLayout;
