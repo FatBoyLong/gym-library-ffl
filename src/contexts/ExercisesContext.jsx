@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+
 import { getExercises } from "../services/apiExercises";
 
 const ExercisesContext = createContext();
@@ -22,14 +23,30 @@ function ExercisesContextProvider({ children }) {
     getExercisesData();
   }, []);
 
+  // useEffect(
+  //   function () {
+  //     if (!query) {
+  //       return () => {
+  //         searchParams.delete("page");
+  //         setSearchParams(searchParams);
+  //       };
+  //     }
+  //   },
+  //   [query, searchParams, setSearchParams],
+  // );
+
   // bodyPart equipment target
-  const sortedExercises = exercisesList.filter(
-    (el) =>
-      el.bodyPart.toLowerCase().includes(query.toLowerCase().trim()) ||
-      el.equipment.toLowerCase().includes(query.toLowerCase().trim()) ||
-      el.target.toLowerCase().includes(query.toLowerCase().trim()) ||
-      el.name.includes(query.toLowerCase().trim()),
-  );
+  const sortedExercises = exercisesList
+    .filter(
+      (el) =>
+        el.bodyPart.toLowerCase().includes(query.toLowerCase().trim()) ||
+        el.equipment.toLowerCase().includes(query.toLowerCase().trim()) ||
+        el.target.toLowerCase().includes(query.toLowerCase().trim()) ||
+        el.name.includes(query.toLowerCase().trim()),
+    )
+    .map((el) => {
+      return { ...el, reps: 0, sets: 0 };
+    });
 
   return (
     <ExercisesContext.Provider

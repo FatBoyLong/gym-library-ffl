@@ -2,7 +2,7 @@ const url = "https://exercisedb.p.rapidapi.com/exercises?limit=1324";
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "e921d0052dmsh8b9061ca0515835p19cfbcjsnb5d7bea54c05",
+    "X-RapidAPI-Key": "ee6d42b312mshce53bed90519441p17e5b8jsnf79537c5e288",
     "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
   },
 };

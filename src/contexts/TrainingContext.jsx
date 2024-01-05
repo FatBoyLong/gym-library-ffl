@@ -25,14 +25,11 @@ function TrainingContextProvider({ children }) {
     [trainingList],
   );
 
-  const trainingListSet = [...new Set(trainingList)];
-
   return (
     <TrainingContext.Provider
       value={{
         trainingList,
         addExerciseToTrainingList,
-        trainingListSet,
         deleteExerciseFromTrainingList,
       }}
     >

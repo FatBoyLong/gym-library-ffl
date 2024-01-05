@@ -7,7 +7,7 @@ function Footer() {
   return (
     <>
       {trainingList.length > 0 && (
-        <footer className="mx-auto flex items-center gap-2">
+        <footer className="mx-auto flex items-center gap-2 pb-2">
           <p className="grow">{`You added ${trainingList.length} exercises to your training!`}</p>
 
           <Button to={"training"}>GO &rarr;</Button>
