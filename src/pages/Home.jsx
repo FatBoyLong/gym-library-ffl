@@ -15,6 +15,13 @@ function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { setModalIsOpen } = useModal();
 
+  const currentPage = !searchParams.get("page")
+    ? 1
+    : Number(searchParams.get("page"));
+
+  const from = (currentPage - 1) * PAGE_SIZE;
+  const to = from + PAGE_SIZE - 1;
+
   if (!query)
     return (
       <p className="flex items-center justify-center">
@@ -25,18 +32,10 @@ function Home() {
       </p>
     );
 
-  const currentPage = !searchParams.get("page")
-    ? 1
-    : Number(searchParams.get("page"));
-
-  const from = (currentPage - 1) * PAGE_SIZE;
-  const to = from + PAGE_SIZE - 1;
-
   return (
     <div className="flex flex-col items-center gap-3 overflow-scroll">
       {sortedExercises.map((el, idx) => {
         if (idx < from || idx > to) return null;
-        console.log(idx);
         return (
           <ExerciseCard
             isActive={el.id === searchParams.get("id")}
@@ -51,6 +50,7 @@ function Home() {
           />
         );
       })}
+
       <Pagination count={sortedExercises.length} />
     </div>
   );

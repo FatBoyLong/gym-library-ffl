@@ -1,6 +1,7 @@
 import { useTraining } from "../contexts/TrainingContext";
 
 import Button from "../ui/Button";
+import HistoryButton from "../ui/HistoryButton";
 import TrainingExercise from "../ui/TrainingExercise";
 
 function TrainingPage() {
@@ -10,7 +11,7 @@ function TrainingPage() {
     <div className="grid h-screen grid-rows-[auto_auto_1fr_auto] gap-4 px-4 pb-4 pt-7">
       <div className="flex justify-between">
         <Button to={-1}>&larr; BACK</Button>
-        <Button>HISTORY</Button>
+        <HistoryButton />
       </div>
       <h1 className="text-center text-xl font-bold uppercase">
         your today's training

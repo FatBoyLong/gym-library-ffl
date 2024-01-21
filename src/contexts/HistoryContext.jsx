@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 
@@ -14,12 +14,28 @@ function HistoryContextProvider({ children }) {
     setHistory((exercises) => [...exercises, exercise]);
   }
 
-  function handleDeleteTrainingToHistory(exercise) {
-    setHistory((exercises) => exercises.filter((el) => el.id !== exercise.id));
+  function handleDeleteFromHistory(exercise) {
+    setHistory((history) =>
+      history.filter((el) => el.identificator !== exercise.identificator),
+    );
   }
 
+  useEffect(
+    function () {
+      localStorage.setItem("history", JSON.stringify(history));
+    },
+    [history],
+  );
+
   return (
-    <HistoryContext.Provider value={history}>
+    <HistoryContext.Provider
+      value={{
+        history,
+        setHistory,
+        handleAddTrainingToHistory,
+        handleDeleteFromHistory,
+      }}
+    >
       {children}
     </HistoryContext.Provider>
   );

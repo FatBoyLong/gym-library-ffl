@@ -12,6 +12,8 @@ function ModalExercise({ id }) {
     deleteExerciseFromTrainingList,
   } = useTraining();
 
+  if (!activeExercise) return null;
+
   const isIdAdded = trainingList.find((el) => el.id === id);
 
   return (
